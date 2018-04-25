@@ -24,5 +24,5 @@ Route::get('animes/{orderby?}/{order?}', function ($orderby = 'rank', $order = '
 });
 
 Route::get('/hello', function () {
-    return hello;
+    return 'hello';
 });
