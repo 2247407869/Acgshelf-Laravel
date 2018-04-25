@@ -22,3 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('animes/{orderby?}/{order?}', function ($orderby = 'rank', $order = 'asc') {
     return AnimeResource::collection(Anime::orderBy($orderby,$order)->paginate(30));
 });
+
+Route::get('/hello', function () {
+    return hello;
+});
