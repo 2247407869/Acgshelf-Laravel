@@ -11,10 +11,13 @@
 |
 */
 
+use App\Anime;
+use App\Http\Resources\AnimeResource;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
-    return 'hello';
+Route::get('animes/{orderby?}/{order?}', function ($orderby = 'rank', $order = 'asc') {
+    return AnimeResource::collection(Anime::orderBy($orderby,$order)->paginate(30));
 });

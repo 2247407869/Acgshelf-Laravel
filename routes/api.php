@@ -23,6 +23,3 @@ Route::get('animes/{orderby?}/{order?}', function ($orderby = 'rank', $order = '
     return AnimeResource::collection(Anime::orderBy($orderby,$order)->paginate(30));
 });
 
-Route::get('/hello', function () {
-    return 'hello';
-});
