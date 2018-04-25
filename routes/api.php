@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Anime;
+use App\Http\Resources\AnimeResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,8 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('animes/{orderby?}/{order?}', function ($orderby = 'rank', $order = 'asc') {
+    return AnimeResource::collection(Anime::orderBy($orderby,$order)->paginate(30));
 });
