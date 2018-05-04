@@ -11,17 +11,9 @@
 |
 */
 
-use App\Anime;
-use App\Http\Resources\AnimeResource;
-
 Route::get('/', function () {
     return view('welcome');
 });
+Auth::routes();
 
-Route::get('animes/{orderby?}/{order?}', function ($orderby = 'rank', $order = 'asc') {
-    return AnimeResource::collection(Anime::orderBy($orderby,$order)->paginate(30));
-});
-
-Route::get('/test', function () {
-    return view('welcome');
-});
+Route::get('/home', 'HomeController@index')->name('home');
