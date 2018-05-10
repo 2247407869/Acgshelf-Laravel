@@ -10,9 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Anime;
 
 Route::get('/', function () {
-    return view('welcome');
+    $animes=Anime::paginate(24);
+    return view('welcome',['animes'=>$animes]);
 });
 
 Auth::routes();
